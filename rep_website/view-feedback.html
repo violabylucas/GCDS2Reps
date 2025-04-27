@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Feedback</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: white;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+      margin-top: 60px;
+      position: relative;
+    }
+    
+    h1 {
+      color: black;
+      margin: 0 40px; /* Add space for back button */
+    }
+    
+    .back-button {
+      position: fixed;
+      left: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 28px;
+      cursor: pointer;
+      color: #000000;
+      text-decoration: none;
+    }
+    
+    .back-button:hover {
+      color: #004499;
+    }
+    
+    .feedback-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .feedback-item {
+      background-color: #f8f8f8;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    .feedback-text {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    
+    .feedback-date {
+      color: #666;
+      font-size: 0.9em;
+      text-align: right;
+    }
+    
+    .empty-message {
+      text-align: center;
+      color: #666;
+      padding: 50px 0;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Password check for protected pages
+    if (sessionStorage.getItem('authenticated') !== 'true') {
+      const PAGE_PASSWORD = "Jaapdenomaap"; // Must match main page password
+      const enteredPassword = prompt("Please enter the password to access this page:");
+      if (enteredPassword !== PAGE_PASSWORD) {
+        alert("Incorrect password");
+        window.location.href = "index.html"; // Redirect to home if wrong
+      } else {
+        sessionStorage.setItem('authenticated', 'true');
+      }
+    }
+    </script>
+  <header>
+    <a href="javascript:history.back()" class="back-button">←</a>
+    <h1>View Feedback</h1>
+  </header>
+  
+  <div class="feedback-container" id="feedback-list">
+    <!-- Feedback items will be inserted here by JavaScript -->
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const feedbackList = document.getElementById('feedback-list');
+      const feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
+      
+      if (feedbacks.length === 0) {
+        feedbackList.innerHTML = '<div class="empty-message">No feedback submissions yet.</div>';
+        return;
+      }
+      
+      feedbacks.forEach(feedback => {
+        const feedbackItem = document.createElement('div');
+        feedbackItem.className = 'feedback-item';
+        
+        const date = new Date(feedback.date);
+        const formattedDate = date.toLocaleString();
+        
+        feedbackItem.innerHTML = `
+          <div class="feedback-text">${feedback.text}</div>
+          <div class="feedback-date">${formattedDate}</div>
+        `;
+        
+        feedbackList.appendChild(feedbackItem);
+      });
+    });
+  </script>
+</body>
+</html>

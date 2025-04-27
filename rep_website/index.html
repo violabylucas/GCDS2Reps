@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S2Reps</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: white;
+        }
+        
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            background-color: white;
+        }
+        
+        #loader-text {
+            font-size: 8vw;
+            font-weight: bold;
+            color: black;
+            transition: opacity 0.5s ease;
+        }
+        
+        #content {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .section {
+            max-width: 800px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .section-header {
+            padding: 15px 20px;
+            background-color: #f8f8f8;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+        
+        .section-header:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .section-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: 
+                max-height 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+                opacity 0.3s ease 0.1s,
+                padding 0.3s ease;
+        }
+        
+        .section-content.expanded {
+            padding: 20px;
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        .date {
+            font-family: 'Courier New', Courier, monospace;
+            padding: 2%;
+        }
+        
+        .link-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            transition: transform 0.2s ease;
+        }
+        
+        .link-item:hover {
+            transform: translateX(3px);
+        }
+        
+        .link-item:last-child {
+            border-bottom: none;
+        }
+        
+        .link-item a {
+            color: #0066cc;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .link-item a:hover {
+            color: #004499;
+            text-decoration: underline;
+        }
+        
+        .arrow {
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            font-size: 1.2em;
+            margin-left: 10px;
+        }
+        
+        .arrow.expanded {
+            transform: rotate(90deg);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 600px;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: black;
+        }
+        
+        #feedback-form textarea {
+            width: 95%;
+            height: 150px;
+            padding: 10px;
+            margin: 10px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        
+        #feedback-form button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        #feedback-form button:hover {
+            background-color: #004499;
+        }
+        
+        .counter {
+            text-align: right;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div id="loader">
+        <div id="loader-text">S2Reps</div>
+    </div>
+    
+    <div id="content">
+        <header>
+            <h1>
+                <span>S2Reps</span>
+            </h1>
+        </header>
+        
+        <div class="section" id="important-info">
+            <div class="section-header" onclick="toggleSection('important-info')">
+                Important Dates
+                <span class="arrow">→</span>
+            </div>
+            <div class="section-content">
+                <p><span class="date">28/04</span> Pre-Committee Meeting.</p>
+                <p><span class="date">29/04</span> GCD Print Swap Meeting.</p>
+                <p><span class="date">07/05</span> Summer Course Committee meeting.</p>
+                <p><span class="date">15/05</span> GCD Print Swap.</p>
+            </div>
+        </div>
+        
+        <div class="section" id="semester">
+            <div class="section-header" onclick="toggleSection('semester')">
+                Rep Notes
+                <span class="arrow">→</span>
+            </div>
+            <div class="section-content">
+                <div class="link-item">
+                    <a href="autumn-semester.html">Autumn Semester</a>
+                </div>
+                <div class="link-item">
+                    <a href="spring-semester.html">Spring Semester</a>
+                </div>
+                <div class="link-item">
+                    <a href="summer-semester.html">Summer Semester</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section" id="feedback">
+            <div class="section-header" onclick="toggleSection('feedback')">
+                Feedback
+                <span class="arrow">→</span>
+            </div>
+            <div class="section-content">
+                <div class="link-item">
+                    <a href="#submit-feedback" id="submit-feedback-link">Submit Feedback</a>
+                </div>
+                <div class="link-item">
+                    <a href="view-feedback.html">View Feedback</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div id="feedback-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Submit Feedback</h2>
+            <form id="feedback-form">
+                <textarea id="feedback-text" maxlength="200" placeholder="Your feedback (200 words max)" required></textarea>
+                <div class="counter"><span id="char-count">0</span>/200 characters</div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Set the password (change "S2Reps2023" to your desired password)
+const PAGE_PASSWORD = "Jaapdenomaap";
+
+function protectPages() {
+  // Password protect these pages
+  const protectedPages = [
+    "autumn-semester.html",
+    "spring-semester.html", 
+    "summer-semester.html",
+    "view-feedback.html"
+  ];
+  
+  // Store password in session when entered correctly
+  sessionStorage.setItem('authenticated', 'false');
+  
+  // Update links to check password
+  protectedPages.forEach(page => {
+    const links = document.querySelectorAll(`a[href="${page}"]`);
+    links.forEach(link => {
+      link.addEventListener('click', function(e) {
+        if (sessionStorage.getItem('authenticated') !== 'true') {
+          e.preventDefault();
+          const enteredPassword = prompt("Please enter the password to access this page:");
+          if (enteredPassword === PAGE_PASSWORD) {
+            sessionStorage.setItem('authenticated', 'true');
+            window.location.href = page;
+          } else {
+            alert("Incorrect password");
+          }
+        }
+      });
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', protectPages);
+
+        function runIntroAnimation() {
+            const loader = document.getElementById('loader');
+            const loaderText = document.getElementById('loader-text');
+            const content = document.getElementById('content');
+            
+            // Show loader with "S2Reps" initially
+            loader.style.display = 'flex';
+            loaderText.style.opacity = '1';
+            
+            // After 1 second, fade out the loader text
+            setTimeout(() => {
+                loaderText.style.opacity = '0';
+                
+                // Then fade in the content
+                setTimeout(() => {
+                    content.style.opacity = '1';
+                    
+                    // Finally hide the loader completely
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                    }, 300);
+                }, 500);
+            }, 1000);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            runIntroAnimation();
+            
+            // Feedback Modal Functionality
+            const modal = document.getElementById('feedback-modal');
+            const openModalBtn = document.getElementById('submit-feedback-link');
+            const closeBtn = document.querySelector('.close');
+            const feedbackForm = document.getElementById('feedback-form');
+            const feedbackText = document.getElementById('feedback-text');
+            const charCount = document.getElementById('char-count');
+            
+            // Open modal when Submit Feedback is clicked
+            openModalBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                modal.style.display = 'block';
+            });
+            
+            // Close modal when X is clicked
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Character counter
+            feedbackText.addEventListener('input', function() {
+                charCount.textContent = this.value.length;
+            });
+            
+            // Form submission
+            feedbackForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const feedback = {
+                    text: feedbackText.value,
+                    date: new Date().toISOString(),
+                    id: Date.now() // Using timestamp as unique ID
+                };
+                
+                // Save to local storage
+                saveFeedback(feedback);
+                
+                // Reset form
+                feedbackText.value = '';
+                charCount.textContent = '0';
+                modal.style.display = 'none';
+                
+                alert('Thank you for your feedback!');
+            });
+            
+            // Function to save feedback to localStorage
+            function saveFeedback(feedback) {
+                let feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
+                feedbacks.unshift(feedback); // Add new feedback to beginning of array
+                localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
+            }
+        });
+        
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const content = section.querySelector('.section-content');
+            const arrow = section.querySelector('.arrow');
+            
+            content.classList.toggle('expanded');
+            arrow.classList.toggle('expanded');
+        }
+    </script>
+</body>
+</html>

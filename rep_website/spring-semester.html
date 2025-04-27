@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Semester Notes | S2Reps</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: white;
+        }
+        
+        header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .back-button {
+            position: fixed;
+            left: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 28px;
+            cursor: pointer;
+            color: #000000;
+            text-decoration: none;
+        }
+        
+        .back-button:hover {
+            color: #004499;
+        }
+        
+        .content-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .notes-content {
+            background-color: #f8f8f8;
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Password check for protected pages
+        if (sessionStorage.getItem('authenticated') !== 'true') {
+          const PAGE_PASSWORD = "Jaapdenomaap"; // Must match main page password
+          const enteredPassword = prompt("Please enter the password to access this page:");
+          if (enteredPassword !== PAGE_PASSWORD) {
+            alert("Incorrect password");
+            window.location.href = "index.html"; // Redirect to home if wrong
+          } else {
+            sessionStorage.setItem('authenticated', 'true');
+          }
+        }
+        </script>
+    <header>
+        <a href="javascript:history.back()" class="back-button">←</a>
+        <h1>
+            <span>S2</span>
+            <span>Reps</span>
+        </h1>
+    </header>
+    
+    <div class="content-container">
+        <div class="notes-content">
+            <h2>Spring Course Committee Meeting Notes</h2>
+            <p>Unit 5</p>
+            <p>•	Disparity between tutors, students felt like there were inconsistencies with how different tutors explained the unit content and different levels of understanding passed onto students varying tutor to tutor.</p>
+            <p>•	One-to-ones were really helpful to those who took them</p>
+            <p>•	Students felt like the workshops were unhelpful and generated more confusion towards their writing as they weren’t guided on converting the workshops into thinking critically about their current practice.</p>
+            <p>•	More guidance is needed around the digital side of the publication hand-in. How submission for it should be done.</p>
+            <p>Unit 6</p>
+            <p>•	Disparity between tutors, students felt like there were inconsistencies with how different tutors explained the unit content and different levels of understanding passed onto students varying tutor to tutor.</p>
+            <p>•	Subject matter was interesting, and projects were engaging.</p>
+            <p>•	Pechy kuchi was super useful in revisiting a project from months ago, but also how to reduce a project to its essential narrative and in thinking in a more imagery sense.</p>
+            <p>•	Some students even suggested that it would be helpful to have a second one for the second project.</p>
+            <p>GCD Skillz</p>
+            <p>•	Each One Teach One worked really well, was socially engaging and encouraged people to experience many new ideas and methods – but also encouraged people to assess what they have to offer and share.</p>
+            <p>•	The Skillz sessions were fun and provided a break in the usual teaching. Having tutors be more engaged in something they find fun helps make the students feel the same way. I think an even larger pool size of sessions would be beneficial with areas from woodwork, physical computing, coding and programming, and others.</p>
+            <p>•	Consider bringing into a non-curriculum session, where students get to participate in ‘free’ courses ran by other students on areas they specialise in.</p>
+
+            <p>Other</p>
+            <p>•	Pushing a part-time job hub where students can share part-time job opportunities for peers. Maybe they know a place, or they used to work somewhere, or want to post that they are looking. Having a channel or a hub for people to find and share would be really beneficial.</p>
+            <p>•	I think another push on time management would be helpful. Some students still struggle with planning their weeks and knowing where time fits in, so maybe another push for this could be handy.</p>
+            <p>•	Alternatively, having as early sense of when lessons will change to will help students avoid forgetting to reschedule work shifts from new teaching days.</p>
+            <p>•	Maybe more student led initiatives as well, open projects or competitions ran by students?</p>
+            <p>•	Free soup is still good soup.</p>
+
+            <p>Unit 7</p>
+            <p>•	Practices are going really well, feels refreshing to have time with the ones you prefer.</p>
+            <p>•	Really helpful having all practices on one teams area, for visibility of all teachings.</p>
+            <p>•	KE seems to be getting off to a good start as well. The introduction to groups works well to ease tensions of group project and get ball rolling quicker.</p>
+
+            <p>Action points from Autumn Course Committee meeting.</p>
+            <p>•	LinkedIn Learning access has been continued but needs more user activity for continuation next renewal.</p>
+            <p>•	Issues around faulty printers not being known about has been resolved – indicators have now been installed to the printers so its known that someone has ticketed the issue.</p>
+            <p>•	The ‘heatness’ (Paul Finn) of f204 and the f block in entirety – keeps being logged but continual reporting when an issue is required.</p>
+            <p>•	Issues around furniture have been reviewed and a request for more ideal furniture has been sent.</p>
+            <p>Library</p>
+            <p>•	Remains 24H until end of term.</p>
+            <p>•	The library still has money left to buy books – so get requests in by May to have them for the next academic year.</p>
+            <p>•	Newsletter will be shared with the post.</p>
+            <p>•	Workshops have been sent out via email.</p>
+
+            <p>Digital Learning & Photo</p>
+            <p>•	Adobe has lots of opportunities – loads of webinars and digital badging (Similar to LinkedIn Learning), access to Adobe Express for free which gives access to Adobe fonts, Adobe skills lab, tickets to Adobe Max, Creative Campus Newsletter.</p>
+            <p>•	Photo Studios and Photography related spaces are getting busier this time of year – so plan in advance.</p>
+
+            <p>Academic Support</p>
+            <p>•	Posters dotted around to help direct to academic support.</p>
+            <p>•	The booking system needs more congruency.</p>
+
+            <p>Course Enhancement</p>
+            <p>•	CSS Surveys (launched last week).</p>
+            <p>•	Community driven initiatives will be backed and potentially helped funded by GCD.</p>
+
+        </div>
+    </div>
+    
+</body>
+</html>

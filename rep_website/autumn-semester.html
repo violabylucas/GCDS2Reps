@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autumn Semester Notes | S2Reps</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: white;
+        }
+        
+        header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .back-button {
+            position: fixed;
+            left: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 28px;
+            cursor: pointer;
+            color: #000000;
+            text-decoration: none;
+        }
+        
+        .back-button:hover {
+            color: #004499;
+        }
+        
+        .content-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .notes-content {
+            background-color: #f8f8f8;
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Password check for protected pages
+        if (sessionStorage.getItem('authenticated') !== 'true') {
+          const PAGE_PASSWORD = "Jaapdenomaap"; // Must match main page password
+          const enteredPassword = prompt("Please enter the password to access this page:");
+          if (enteredPassword !== PAGE_PASSWORD) {
+            alert("Incorrect password");
+            window.location.href = "index.html"; // Redirect to home if wrong
+          } else {
+            sessionStorage.setItem('authenticated', 'true');
+          }
+        }
+        </script>
+    <header>
+        <a href="javascript:history.back()" class="back-button">←</a>
+        <h1>
+            <span>S2</span>
+            <span>Reps</span>
+        </h1>
+    </header>
+    
+    <div class="content-container">
+        <div class="notes-content">
+            <h2>Autumn Course Committee Meeting Notes</h2>
+            <p>Things raised:</p>
+
+                <p>1. Timetable - People want more clarity around creative unions to plan their work/care  responsibilities in advance.</p>
+                <p>2. Technical workshops - People would like to see more integrations of technical workshops within platforms like Time & Movement.</p>
+                <p>3. Career and Employ - People have shared that they are unable to sign-up for signups. Limited slots on website</p>
+                <p>4. Unit 6 peer midpoint review - people had good experience with pechy kuchy format. talking through it with peers helped understand LOs better.</p>
+                
+                <p>Not Raised in CC but with Jaap: Link to Digital learning appendix 5: Lots of recent notes about people being unsure about accessible resources available.</p>
+                
+                <p>Notes from meeting:</p>
+                
+                <p>Response to points raised:</p>
+                <p>- Timetable for CU will be provided sooner - before Christmas.</p>
+                <p></p>- They will look into suggesting (not forcing) workshops for platforms.
+                <p></p>- They will raise Career & Employ unavailability at a higher meeting.
+                
+                <p></p>Notes to share with students:
+                
+                <p>- LinkedIn learning is renewed for another year.</p>
+                <p>- But caution around padding within course curriculum as may not extend after licence renewal.</p>
+                <p>- Also Digital Learning have remade most popular videos.</p>
+                <p>- Keep giving positive feedback about free soup - to show popularity and keep it around.</p>
+                <p>- Library overnight is open until end of term (24 hours during working week).</p>
+                <p>- Only security staff overnight, so they can’t help with technical processes.</p>
+                <p>- Library has new budget for the year so can fulfil requests purchasing books.</p>
+                <p>- Notes about making sure people are more responsibly returning and renewing loans.</p>
+                <p>- There are lots of digital drop-ins available.</p>
+                <p>- Publications area are working a lot better with changes to the space.</p>
+                <p>- Riso workshop has moved to the Digital Print workshop - room B301 (3rd floor). This is still available to BA GCD.</p>
+                <p>- Licences for Glyphs 2 and Font Forge.</p>
+                <p>- There are lots of physical computing hardware and support.</p>
+                <p>- Arduino kit to be moved to PC space instead of at loan store</p>
+                
+                <p>Notes for Reps:</p>
+                
+                <p>- We need to look over Counselling, Health Advice Services so we an better direct students who come for help.</p>
+                <p>- Lateness is noted but has no academic effect.</p>
+                <p>- UAL Climate Racial Social Justice review published.</p>
+                <p>- COP - numbers are better this year so the issues of space are naturally resolved ( and there also is more space )</p>
+                <p>- No address to the noise pollution as the space is privately controlled public area.</p>
+                <p>- Practices have been adapted to reduce repetition.</p>
+                <p>- The course is working through ideas about how SEAtS.</p>
+        </div>
+    </div>
+
+</body>
+</html>
